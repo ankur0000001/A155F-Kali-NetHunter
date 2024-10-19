@@ -20,6 +20,7 @@ jobs:
         wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
         tar -xf toolchain.tar.gz
         git clone --depth 1 https://android.googlesource.com/platform/build
+        ls -l build/soong
         chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          
