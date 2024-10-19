@@ -23,6 +23,7 @@ jobs:
         cd build
         git clone --depth 1 https://android.googlesource.com/platform/build make
         git clone --depth 1 https://android.googlesource.com/platform/build/soong
+        git clone https://android.googlesource.com/platform/build/blueprint
         cd ..
         ls -l build/soong
         chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
