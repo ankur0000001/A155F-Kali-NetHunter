@@ -19,6 +19,9 @@ jobs:
       run: |
         wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
         tar -xf toolchain.tar.gz
+        chmod +x ./prebuilts/build-tools/build-prebuilts.sh
+         ./prebuilts/build-tools/build-prebuilts.sh
+         
         git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
         cd kali-nethunter-installer
         git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernels.git kernels
