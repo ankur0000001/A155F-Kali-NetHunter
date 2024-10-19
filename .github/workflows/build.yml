@@ -20,11 +20,10 @@ jobs:
         wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
         tar -xf toolchain.tar.gz
         git clone --depth 1 https://android.googlesource.com/platform/build
-        chmod +x ./prebuilts/build-tools/build-prebuilts.sh
-        export OUT_DIR=./out
-         ./prebuilts/build-tools/build-prebuilts.sh
+        chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
+         ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          
-        git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
-        cd kali-nethunter-installer
-        git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernels.git kernels
-        python build.py --help
+        # git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
+        # cd kali-nethunter-installer
+        # git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernels.git kernels
+        # python build.py --help
