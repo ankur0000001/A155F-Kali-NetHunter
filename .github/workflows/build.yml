@@ -1,0 +1,22 @@
+name: Build Kernel
+
+on:
+  push:
+  workflow_dispatch:
+env: 
+  CI: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Maximize build space
+      uses: easimon/maximize-build-space@v10
+      with:
+        swap-size-mb: 32768
+
+    - name: Build Kernel
+      run: |
+        git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
+        cd kali-nethunter-installer
+        ls
