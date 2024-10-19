@@ -14,25 +14,17 @@ jobs:
       uses: easimon/maximize-build-space@v10
       with:
         swap-size-mb: 32768
-    - uses: actions/setup-go@v5
     - name: Build Kernel
       run: |
         set -x
         wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
         tar -xf toolchain.tar.gz
-        mkdir build
-        cd build
-        git clone --depth 1 https://android.googlesource.com/platform/build make
-        git clone --depth 1 https://android.googlesource.com/platform/build/soong
-        git clone https://android.googlesource.com/platform/build/blueprint
-        cd ../prebuilt
-        mkdir go
-        cd go
-        git clone https://android.googlesource.com/platform/prebuilts/go/linux-x86
-        cd ../..
+        curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+        chmod +x repo
+        ./repo init -u https://android.googlesource.com/platform/manifest
+        ls
+        
         chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
-
-        export GOROOT=$(go env GOROOT)
          ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          
         # git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
