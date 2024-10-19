@@ -18,7 +18,8 @@ jobs:
     - name: Build Kernel
       run: |
         git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
-        wget https://drive.google.com/file/d/1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO/view?usp=share_link -o toolchain.tar.gz
+        wget 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
         tar -xf toolchain.tar.gz
         ls
+        tree || :
         
