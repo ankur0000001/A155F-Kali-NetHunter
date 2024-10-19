@@ -25,8 +25,9 @@ jobs:
         git clone --depth 1 https://android.googlesource.com/platform/build/soong
         git clone https://android.googlesource.com/platform/build/blueprint
         cd ..
-        ls -l build/soong
         chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
+
+        export GOROOT=$(go env GOROOT)
          ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          
         # git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
