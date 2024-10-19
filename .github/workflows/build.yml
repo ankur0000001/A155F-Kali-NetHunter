@@ -17,11 +17,14 @@ jobs:
     - name: Build Kernel
       run: |
         set -x
-        wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
-        tar -xf toolchain.tar.gz
         curl https://storage.googleapis.com/git-repo-downloads/repo > repo
         chmod +x repo
         ./repo init -u https://android.googlesource.com/platform/manifest
+        ./repo sync
+        
+        wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
+        tar -xf toolchain.tar.gz
+        
         ls
         
         chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
