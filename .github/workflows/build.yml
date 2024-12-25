@@ -25,21 +25,25 @@ jobs:
     - name: Build Kernel
       run: |
         set -x
-        curl https://storage.googleapis.com/git-repo-downloads/repo > repo
-        chmod +x repo
-        ./repo init -u https://android.googlesource.com/platform/manifest
-        ./repo sync
+        # curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+        # chmod +x repo
+        # ./repo init -u https://android.googlesource.com/platform/manifest
+        # ./repo sync
         
         wget -q 'https://drive.usercontent.google.com/download?id=1NNeoUX6T4UMeodwbhA02teTFyzuUmNlO&export=download&confirm=t' -O toolchain.tar.gz
         tar -xf toolchain.tar.gz
         
         ls
-        
-        chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
-         ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
+        cd toolchain
+        git clone https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel-builder
+        cd kali-nethunter-kernel-builder/
+        touch local.config
+        ./build.sh
+        # chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
+        #  ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          
         # git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-installer.git
         # cd kali-nethunter-installer
-        git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernels.git kernels
-        cd kernels
-        python build.py --help
+        # git clone --depth 1 https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernels.git kernels
+        # cd kernels
+        # python build.py --help
