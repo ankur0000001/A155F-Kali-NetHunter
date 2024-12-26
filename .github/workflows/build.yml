@@ -38,7 +38,27 @@ jobs:
         git clone https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernel-builder
         cd kali-nethunter-kernel-builder/
         touch local.config
-        echo N | ./build.sh
+        sed -i '899,$d' build.sh
+
+        cat <<'EOF' >> build.sh
+        source ${BUILD_DIR}/config
+        echo "setup_env"
+        setup_env
+        echo make_oclean
+        make_oclean
+        echo make_sclean
+        make_sclean
+        echo setup_dirs
+        setup_dirs
+        echo "edit_config && make_kernel"
+        edit_config && make_kernel
+        echo make_aclean
+        make_aclean
+        echo make_anykernel_zip
+        make_anykernel_zip
+        EOF
+
+        ./build.sh
         # chmod +x ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
         #  ./kernel/prebuilts/kernel-build-tools/build-prebuilts.sh
          
