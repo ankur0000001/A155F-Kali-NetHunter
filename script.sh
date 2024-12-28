@@ -8,4 +8,16 @@ git clone https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-ke
 cd kali-nethunter-kernel-builder/
 sudo apt-get update
 sudo apt-get install -y flex
+
+cat <<'EOF' > local.config
+CROSS_COMPILE_SRC="https://kali.download/nethunter-images/toolchains/google_aarch64-standalone-oreo-4.9.tar.xz"
+
+IMAGE_NAME=Image.gz
+
+DO_DTB=true
+
+KERNEL_IMAGE=$KDIR/arch/arm64/boot/$IMAGE_NAME
+KERNEL_OUT="$KDIR"
+EOF
+
 ./build.sh
